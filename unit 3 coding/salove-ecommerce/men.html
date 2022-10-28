@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MEN</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        #container1 {
+            position: fixed;
+            left: 90px;
+            top: 0px;
+            width: 90%;
+            margin: 20px auto;
+            background-color: rgb(14, 14, 90);
+            height: auto;
+            display: flex;
+            justify-content: space-between;
+            padding: 5px 20px;
+            border-radius: 10px;
+            box-sizing: border-box;
+            color: white;
+            font-family: 'Roboto Mono', monospace;
+        }
+
+        .head {
+            /* flex-direction: row; */
+            display: flex;
+            font-weight: bold;
+            /* margin: 10px 5px; */
+        }
+
+        .head>div {
+            padding: 25px 10px;
+            margin: 0px 20px;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            /* background-color: #161623; */
+            /* background-color: rgb(241, 239, 239); */
+        }
+
+        #container {
+            width: 90%;
+            height: auto;
+            margin: 14px auto;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            box-sizing: border-box;
+            grid-gap: 20px;
+
+        }
+
+        .card {
+            background-color: white;
+            display: flex;
+            flex-direction: column;
+            padding: 10px;
+            border-radius: 20px;
+            box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+
+        }
+
+        .card img {
+            width: 100%;
+            border-radius: 20px;
+        }
+
+        .small {
+            display: flex;
+            justify-content: space-between;
+            width: 100px;
+        }
+
+        .line {
+            text-decoration: line-through;
+            color: gray;
+        }
+
+        p {
+            margin-right: 10px;
+        }
+
+        button {
+            width: 170px;
+            margin: auto;
+            padding: 10px;
+        }
+
+        #priceSelect {
+            height: 35px;
+            width: 117px;
+            margin-top: 117px;
+            margin-left: 50px;
+        }
+
+        @media screen and (max-width:900px) and (min-width:500px) {
+            #container {
+                grid-template-columns: repeat(3, 1fr);
+                margin: auto;
+                width: 90%;
+            }
+        }
+
+        @media screen and (max-width:500px) and (min-width:200px) {
+            #container {
+                grid-template-columns: repeat(2, 1fr);
+                margin: auto;
+                width: 90%;
+            }
+        }
+
+        @media screen and (max-width:200px) and (min-width:0px) {
+            #container {
+                grid-template-columns: repeat(1, 1fr);
+                margin: auto;
+                width: 90%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div id="container1">
+        <div class="head">
+            <h2 id="main">SHOPIN</h2>
+        </div>
+        <div class="head">
+            <div id="men">Men</div>
+            <div id="women">Women</div>
+            <div id="signin">Sign in</div>
+            <div id="login">Log in</div>
+            <div id="cart">Cart</div>
+        </div>
+    </div>
+    <select name="" id="priceSelect" onchange="filterPrice()">
+        <option value="">price of cart</option>
+        <option value="high">high to low</option>
+        <option value="low">low to high</option>
+    </select>
+
+    <select name="" id="category" onchange="categoryName()">
+        <option value="">Category</option>
+        <option value="Reebok">Reebok</option>
+        <option value="Adidas">Adidas</option>
+    </select>
+    <!-- <div id="container">
+
+    </div> -->
+</body>
+
+</html>
+
+<script>
+    var men = JSON.parse(localStorage.getItem("MensData"));
+    var cartarr = JSON.parse(localStorage.getItem("CartItem")) || [];
+    editMenPage(men);
+
+    function filterPrice() {
+        var value = document.querySelector("#priceSelect").value;
+        // console.log(value);
+        if (value == "high") {
+            men.sort(function (a, b) {
+                return b.price - a.price;
+            })
+        }
+        if (value == "low") {
+            men.sort(function (a, b) {
+                return a.price - b.price;
+            })
+        }
+        editMenPage(men);
+    }
+    function categoryName() {
+        var value = document.querySelector("#category").value
+        console.log(value)
+        var data = men.filter(function (el) {
+            return el.brand == value;
+        })
+        editMenPage(data);
+    }
+
+    function editMenPage(men) {
+        var mdiv = document.createElement("div");
+        mdiv.setAttribute("id", "container");
+        document.querySelector("body").append(mdiv);
+        document.querySelector("#container").textContent = "";
+        men.map(function (el) {
+            var s1div = document.createElement("div");
+            s1div.setAttribute("class", "card");
+
+            var image = document.createElement("img");
+            image.setAttribute("src", el.image_url);
+
+            // document.querySelector("body").append(image)
+
+            var name = document.createElement("h3");
+            name.innerHTML = el.name;
+
+            var s2div = document.createElement("div");
+            s2div.setAttribute("class", "small");
+
+            var para1 = document.createElement("p");
+            para1.innerHTML = el.price;
+
+            var para2 = document.createElement("p");
+            para2.setAttribute("class", "line")
+            para2.innerHTML = el.strikedoffprice;
+
+            var para3 = document.createElement("p");
+            para3.textContent = el.brand;
+
+            var button = document.createElement("button");
+            button.innerHTML = "Add to Cart";
+            button.addEventListener("click", function addtocart() {
+                addCart(el)
+            })
+            function addCart(el) {
+                cartarr.push(el);
+                alert("add to cart successfully")
+                // console.log(cartarr);
+                localStorage.setItem("CartItem", JSON.stringify(cartarr));
+
+            }
+
+            s2div.append(para1, para2, para3);
+            s1div.append(image, name, s2div, button);
+            document.querySelector("#container").append(s1div)
+
+        })
+    }
+
+
+
+
+    document.querySelector("#main").addEventListener("click", function () {
+        window.location.href = "home.html"
+    });
+    document.querySelector("#men").addEventListener("click", function () {
+        window.location.href = "men.html"
+    })
+    document.querySelector("#women").addEventListener("click", function () {
+        window.location.href = "women.html"
+    })
+    document.querySelector("#signin").addEventListener("click", function () {
+        window.location.href = "signin.html"
+    })
+    document.querySelector("#login").addEventListener("click", function () {
+        window.location.href = "login.html"
+    })
+    document.querySelector("#cart").addEventListener("click", function () {
+        window.location.href = "cartpage.html"
+    })
+</script>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <div id="container">
+        <form action="">
+            Name : <input type="text" id="name"><br>
+            City : <input type="text" name="" id="City"><br>
+            Pincode : <input type="text" name="" id="Pincode"><br>
+            <input type="submit" value="Submit">
+        </form>
+    </div>
+</body>
+
+</html>
+
+<script>
+    document.querySelector("form").addEventListener("submit", SubmitData)
+
+    function SubmitData(event) {
+        event.preventDefault()
+        let name = document.getElementById("name").value
+        let city = document.getElementById("City").value
+        let zip = document.getElementById("Pincode").value
+        console.log(name, city, zip)
+        if (name != "" && city != "" && zip != "") {
+            window.location.href = "payment.html"
+        }
+    }
+</script>

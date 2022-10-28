@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="container">
+        <form action="">
+            <input type="text" id="name" placeholder="Enter your name"><br>
+            <input type="date" name="" id="date" placeholder="Enter data">
+            <input type="text" name="" id="Card" placeholder="Enter Card Number"><br>
+            <input type="text" name="" id="cvv" placeholder="Enter your CVV"><br>
+            <input type="submit" value="Submit">
+        </form>
+    </div>
+</body>
+
+</html>
+<script>
+    document.querySelector("form").addEventListener("submit", subminCardDeatils)
+
+    function subminCardDeatils(event) {
+        event.preventDefault()
+        let name = document.querySelector("#name").value
+        let date = document.querySelector("#date").value
+        let card = document.querySelector("#Card").value
+        let cvv = document.querySelector("#cvv").value
+
+        if (name != "" && date != "" && card != "" && cvv != "") {
+            setTimeout(function () {
+                alert("your order is confirmed")
+            }, 5000)
+        }
+
+    }
+</script>

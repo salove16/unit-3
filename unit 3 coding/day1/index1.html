@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="main">
+
+    </div>
+</body>
+</html>
+<script>
+// document.queryselector("#main").
+var obj=document.createElement("button")
+obj.addEventListener("click",objects)
+obj.textContent="object"
+
+
+
+
+
+
+var arr=document.createElement("button")
+arr.addEventListener("click",array)
+arr.textContent="Array"
+
+var fun=document.createElement("button")
+fun.addEventListener("click",func)
+fun.textContent="Function"
+
+
+var str=document.createElement("button")
+str.addEventListener("click",string)
+str.textContent="String"
+
+var num=document.createElement("button")
+num.addEventListener("click",numbe)
+num.textContent="Number"
+
+var nul=document.createElement("button")
+nul.addEventListener("click",null_n)
+nul.textContent="Null"
+
+var un=document.createElement("button")
+un.addEventListener("click",undef)
+un.textContent="Undefined"
+
+document.querySelector("body").append(obj,arr,fun,str,num,nul,un)
+
+function objects()
+{
+    document.querySelector("#main").textContent=""
+    var u= document.createElement('ul')
+
+var l1 = document.createElement('li')
+l1.textContent="An object is a collection of related data and/or functionality.";
+
+var l2 = document.createElement('li')
+l2.textContent=" These usually consist of several variables and functions (which are called Key and Pair and methods when they are inside objects).";
+var l3 = document.createElement('li')
+l3.textContent="In JavaScript, objects are mutable, not primitive values."
+var l4 = document.createElement('li')
+l4.textContent="A mutable object is an object whose state can be modified after it is created"
+var l5 = document.createElement('li')
+l5.textContent="an empty object i.e  var obj = {} can also be define as var obj = null"
+var l6=document.createElement("li")
+l6.textContent="In JavaScript, when you assign an existing object to a new variable, it does not create a new object with the same properties. Instead, it creates a reference to the original. It is not immutable."
+
+u.append(l1,l2,l3,l4,l5,l6)
+document.querySelector("#main").append(u)
+// console.log(u)
+}
+
+function array()
+{
+    document.querySelector("#main").textContent=""
+    var u= document.createElement('ul')
+
+var l1 = document.createElement('li')
+l1.textContent="In JavaScript, array is a single variable that is used to store different elements.";
+
+var l2 = document.createElement('li')
+l2.textContent="JavaScript arrays are zero-indexed. The first element of an array is at index 0 , and the last element is at the index value equal to the value of the array's length property minus 1 . ";
+
+var l3 = document.createElement('li')
+l3.textContent="An array is a container object that holds a fixed number of values of a single type. The length of an array is established when the array is created. ... Each item in an array is called an element, and each element is accessed by its numerical index.";
+
+var l4 = document.createElement('li')
+l4.textContent="In JavaScript, array are mutable, not primitive values.";
+
+var l5 = document.createElement('li')
+l5.textContent="Array has several mutable operations - push, pop, splice, shift, unshift, reverse and sort.";
+
+var l6 = document.createElement('li')
+l6.textContent="In JavaScript, when you assign an existing array to a new variable, it does not create a new array with the same properties. Instead, it creates a reference to the original. It is not immutable.";
+
+u.append(l1,l2,l3,l4,l5,l6)
+console.log(u)
+document.querySelector("#main").append(u)
+}
+
+function func()
+{
+    document.querySelector("#main").textContent=""
+    var u= document.createElement('ul')
+
+var l1 = document.createElement('li')
+l1.textContent="JavaScript provides functions similar to most of the scripting and programming languages.";
+
+var l2 = document.createElement('li')
+l2.textContent="In JavaScript, a function allows you to define a block of code, give it a name and then execute it as many times as you want.";
+
+var l3 = document.createElement('li')
+l3.textContent="A JavaScript function can be defined using function keyword. ";
+
+var l4 = document.createElement('li')
+l4.textContent="A function can have one or more parameters, which will be supplied by the calling code and can be used inside a function.";
+
+var l5 = document.createElement('li')
+l5.textContent="JavaScript is a dynamic type scripting language, so a function parameter can have value of any data type. ";
+
+var l6 = document.createElement('li')
+l6.textContent="You can pass less or more arguments while calling a function. If you pass less arguments then rest of the parameters will be undefined. If you pass more arguments then additional arguments will be ignored. ";
+
+u.append(l1,l2,l3,l4,l5,l6)
+console.log(u)
+document.querySelector("#main").append(u) 
+}
+
+function string()
+{
+    document.querySelector("#main").textContent=""
+    var u= document.createElement('ul')
+
+var l1 = document.createElement('li')
+l1.textContent="String is a primitive data type in JavaScript.";
+
+var l2 = document.createElement('li')
+l2.textContent="A string is textual content.";
+var l3 = document.createElement('li')
+l3.textContent="It must be enclosed in single or double quotation marks.";
+
+var l4 = document.createElement('li')
+l4.textContent="Since, string is character index, it can be accessed using for loop and for-of loop.";
+var l5 = document.createElement('li')
+l5.textContent="String value can be assigned to a variable using equal to (=) operator.";
+
+var l6 = document.createElement('li')
+l6.textContent="In JavaScript, strings is a immutable by design.";
+u.append(l1,l2,l3,l4,l5,l6)
+console.log(u)
+document.querySelector("#main").append(u)  
+}
+
+
+function numbe()
+{
+    document.querySelector("#main").textContent=""
+    var u= document.createElement('ul')
+
+var l1 = document.createElement('li')
+l1.textContent="Number is a primitive wrapper object used to represent and manipulate numbers like 37 or -9.25 .";
+
+var l2 = document.createElement('li')
+l2.textContent="The Number constructor contains constants and methods for working with numbers. Values of other types can be converted to numbers using the Number() function.";
+var l3 = document.createElement('li')
+l3.textContent="the Maximum value will be Infinity or the Minimum value will be -Infinity";
+
+var l4 = document.createElement('li')
+l4.textContent="When used as a function, Number(value) converts a string or other value to the Number type. If the value can't be converted, it returns NaN.";
+var l5 = document.createElement('li')
+l5.textContent="Can use Unary method to convert number value in string to Number type but ony for one number type string";
+
+var l6 = document.createElement('li')
+l6.textContent="In JavaScript,numbers is a immutable by design.";
+u.append(l1,l2,l3,l4,l5,l6)
+console.log(u)
+document.querySelector("#main").append(u)  
+}
+
+
+function null_n()
+{
+    document.querySelector("#main").textContent=""
+    var u= document.createElement('ul')
+
+var l1 = document.createElement('li')
+l1.textContent="'Null' is a keyword in JavaScript that signifies 'no value' or nonexistence of any value.";
+
+var l2 = document.createElement('li')
+l2.textContent="you wish to shred a variable off its assigned value, you can simply assign 'null' to it.";
+
+var l3 = document.createElement('li')
+l3.textContent="Besides this, like any other object, it is never implicitly assigned to a variable by JavaScript.";
+
+var l4 = document.createElement('li')
+l4.textContent="null >= 0 and null <= 0 are both true.";
+
+var l5 = document.createElement('li')
+l5.textContent="In JavaScript, one difference is that null is of type object and undefined is of type undefined.";
+
+var l6 = document.createElement('li')
+l6.textContent="JavaScript, null==undefined is true, and considered equal if type is ignored.";
+
+u.append(l1,l2,l3,l4,l5,l6)
+console.log(u)
+document.querySelector("#main").append(u)  
+}
+
+
+function undef()
+{
+    document.querySelector("#main").textContent=""
+    var u= document.createElement('ul')
+
+var l1 = document.createElement('li')
+l1.textContent="undefined is a property of the global object.";
+
+var l2 = document.createElement('li')
+l2.textContent="A variable that has not been assigned a value is of type undefined .";
+
+var l3 = document.createElement('li')
+l3.textContent="A method or statement also returns undefined if the variable that is being evaluated does not have an assigned value.";
+
+var l4 = document.createElement('li')
+l4.textContent="A function returns undefined if a value was not returned .";
+
+var l5 = document.createElement('li')
+l5.textContent="The initial value of undefined is the primitive value undefined. ";
+
+var l6 = document.createElement('li')
+l6.textContent="null is an assigned value. It means nothing. undefined means a variable has been declared but not defined yet.";
+
+u.append(l1,l2,l3,l4,l5,l6)
+console.log(u)
+document.querySelector("#main").append(u)
+}
+
+
+
+
+
+
+
+</script>

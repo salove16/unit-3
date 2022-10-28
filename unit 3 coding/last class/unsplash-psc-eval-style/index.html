@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      #container{
+        display: flex;
+      }
+      #sidebar{
+        flex: 2;
+        /* border: solid 2px black; */
+      }
+      #main{
+        flex: 8;
+        /* border: solid 2px rgb(184, 13, 13); */
+        display: grid;
+        grid-template-columns: repeat(3,1fr);
+        grid-gap: 20px;
+      }
+    img{
+      height: 400px;
+      width: 400px;
+    }
+    </style>
+  </head>
+
+  <body>
+    <div id="container">
+      <div id="sidebar">
+        <!--DO NOT CHANGE THIS ID's-->
+        <!--Append the horizontal navbar(sidebar) here only-->
+        
+      </div>
+
+      <div id="main">
+        <!--DO NOT CHANGE THIS ID's-->
+        <!--Append top images here only-->
+      </div>
+    </div>
+  </body>
+</html>
+<script type="module">
+  import sidebar from './components/sidebar.js'
+
+  import { makeapicall , appendimage } from './scripts/main.js'
+
+  // console.log(sidebar)
+let sidebar_div=document.getElementById("sidebar")
+sidebar_div.innerHTML=sidebar()
+
+// let res=document.getElementById("main")
+let image_data= await makeapicall(`https://api.unsplash.com/photos/?client_id=G0VS2ZyPPAT2htSW4rP-OBc__gO6aIU2k83kEm9Kf14`)
+// console.log(res)
+let parent=document.getElementById("main")
+appendimage(image_data,parent)
+
+let searchInput=document.getElementById("search")
+searchInput.addEventListener("keypress",(e)=>{
+  if(e.key=="Enter")
+  {
+    let input_value=document.getElementById("search").value
+    localStorage.setItem("search_term",input_value)
+
+window.location.href="search.html"
+  }
+})
+
+
+
+
+</script>
+
+<!-- // https://api.unsplash.com/photos/?client_id=YOUR_ACCESS_KEY -->

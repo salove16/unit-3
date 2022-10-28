@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="main">
+        <form action="">
+            <input type="text" placeholder="student name" id="name">
+            <input type="text" placeholder="number" id="numb">
+            <input type="text" placeholder="city" id="city">
+            <input type="submit" placeholder="submit">
+        </form>
+    </div>
+    
+</body>
+</html>
+<script>
+document.querySelector("form").addEventListener("submit", Data)
+var array=[]
+
+function data_student(s,n,c)
+{
+    this.name=s
+    this.number=n
+    this.city=c
+}
+
+function Data(event)
+{
+    event.preventDefault()
+
+    
+var s=document.querySelector("#name").value
+var n=document.querySelector("#numb").value
+var c=document.querySelector("#city").value
+
+var student= new data_student(s,n,c)
+array.push(student)
+localStorage.setItem("student_data",JSON.stringify(array))
+}
+
+
+
+</script>

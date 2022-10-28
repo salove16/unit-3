@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>chekout</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        #container1 {
+            /* position: fixed; */
+            /* left: 90px; */
+            width: 90%;
+            margin: 20px auto;
+            background-color: rgb(14, 14, 90);
+            height: auto;
+            display: flex;
+            justify-content: space-between;
+            padding: 5px 20px;
+            border-radius: 10px;
+            box-sizing: border-box;
+            color: white;
+            font-family: 'Roboto Mono', monospace;
+        }
+
+        .head {
+            /* flex-direction: row; */
+            display: flex;
+            font-weight: bold;
+            /* margin: 10px 5px; */
+        }
+
+        .head>div {
+            padding: 25px 10px;
+            margin: 0px 20px;
+        }
+
+
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: black;
+        }
+
+
+        #container {
+            width: 20%;
+            height: auto;
+            margin: 100px auto;
+            /* background-color: blue; */
+            /* border: 2px solid red; */
+            padding: 10px;
+        }
+
+        #form {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            align-items: center;
+            background-color: #37313166;
+            /* width: 100%; */
+        }
+
+        input {
+            margin: 20px;
+            background: none;
+            border: none;
+            border-bottom: 2px solid rgba(255, 255, 255, 0.301);
+            font-size: 1.2em;
+        }
+
+        h1 {
+            color: white;
+            text-align: center;
+        }
+
+        #submit {
+            background-color: black;
+            border: none;
+            color: wheat;
+            padding: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="container1">
+        <div class="head">
+            <h2 id="main">SHOPIN</h2>
+        </div>
+        <div class="head">
+            <div id="men">Men</div>
+            <div id="women">Women</div>
+            <div id="signin">Sign in</div>
+            <div id="login">Log in</div>
+            <div id="cart">Cart</div>
+        </div>
+    </div>
+    <div id="container">
+        <h1>Payment Details
+        </h1>
+        <form id="form">
+            <input type="text" name="" value="" placeholder="enter name" id="name">
+            <input type="number" value="" placeholder="enter card num" id="num">
+            <input type="number" name="" id="num2" value="" placeholder="enter cvv">
+            <input type="text" name="" placeholder="enter expiry date" value="" id="expiry">
+            <input type="submit" value="Submit now" id="submit">
+        </form>
+    </div>
+</body>
+
+</html>
+<script>
+    document.querySelector("form").addEventListener("submit", submitForm);
+
+    function submitForm(event) {
+        event.preventDefault();
+        var name = document.querySelector("#name").value;
+        var card = document.querySelector("#num").value;
+        var cvv = document.querySelector("#num2").value
+        var expiry = document.querySelector("#expiry").value;
+        // console.log(name, card, cvv, expiry)
+
+        if (name != "" && card != "" && cvv != "" && expiry != "") {
+            alert("your payment was successful")
+        }
+        else {
+            alert("enter your correct details")
+        }
+    }
+
+
+    document.querySelector("#main").addEventListener("click", function () {
+        window.location.href = "home.html"
+    });
+    document.querySelector("#men").addEventListener("click", function () {
+        window.location.href = "men.html"
+    })
+    document.querySelector("#women").addEventListener("click", function () {
+        window.location.href = "women.html"
+    })
+    document.querySelector("#signin").addEventListener("click", function () {
+        window.location.href = "signin.html"
+    })
+    document.querySelector("#login").addEventListener("click", function () {
+        window.location.href = "login.html"
+    })
+    document.querySelector("#cart").addEventListener("click", function () {
+        window.location.href = "cartpage.html"
+    })
+</script>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>
+<script>
+    const person1={
+   name:'Amar',
+    skill:'Singer',
+    city:'Goa',
+    Talent()
+    {
+console.log(person1.name,this.skill)
+    }
+    }
+    const person2={
+        name:'Akabar',
+    skill:'Chef',
+    city:'Mumbai',
+    Talent()
+    {
+console.log(person2.name,this.skill)
+    }  
+    }
+    const person3={
+        name:'Anthnoy',
+    skill:'Magician',
+    city:'Kashmir',
+    Talent()
+    {
+console.log(person3.name,this.skill)
+    } 
+    }
+    person1.Talent.call(person2)
+    person1.Talent.call(person3)
+    person2.Talent.call(person1)
+    person2.Talent.call(person3)
+    person3.Talent.call(person1)
+    person3.Talent.call(person2)
+</script>

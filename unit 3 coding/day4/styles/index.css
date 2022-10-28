@@ -1,0 +1,46 @@
+#slideshow{
+    height:450px;
+    width: 100%;
+    /* background-color: thistle; */
+    /* margin: auto; */
+}
+
+#slideImg{
+    height: 100%;
+    /* margin:5% 30%; */
+    width:100% ;
+    box-shadow: rgba(6, 24, 44, 0.4) 0px 0px 0px 2px, rgba(6, 24, 44, 0.65) 0px 4px 6px -1px, rgba(255, 255, 255, 0.08) 0px 1px 0px inset;
+}
+
+
+#movies{
+    display: grid;
+    grid-template-columns:repeat(3,1fr ) ;
+    /* grid-template-rows: repeat(3,); */
+    grid-gap: 40px;
+    margin-top: 4%;
+}
+.flex_img{
+    display: flex;
+    /* border: 1px solid black; */
+    box-shadow: rgba(6, 24, 44, 0.4) 0px 0px 0px 2px, rgba(6, 24, 44, 0.65) 0px 4px 6px -1px, rgba(255, 255, 255, 0.08) 0px 1px 0px inset;
+    width: 70%;
+}
+
+.flex_img>div:nth-child(1){
+    /* width: 40%; */
+    height: 100%;
+}
+.flex_img>div:nth-child(2){
+    margin-left: 5px;
+}
+/* .flex_img>img{
+height: 100%;
+} */
+
+#movie_id{
+    height: 100%;
+}
+#sort-buttons{
+    margin:2% 0 0 75%;
+}

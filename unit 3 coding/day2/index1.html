@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="main">
+        <form action="">
+            <input type="text" placeholder="student name" id="name">
+            <input type="text" placeholder="number" id="numb">
+            <input type="text" placeholder="city" id="city">
+            <input type="submit" placeholder="submit">
+        </form>
+    </div>
+    <table>
+        <thead>
+            <tr>
+                <td>#</td>
+                <td>name</td>
+                <td>number</td>
+                <td>city</td>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+    
+</body>
+</html>
+<script>
+document.querySelector("form").addEventListener("submit", Data)//here form is been selected and submit is my onclick whos function is Data
+var array=JSON.parse(localStorage.getItem("student_data"))||[]
+table()
+function data_student(s,n,c)
+{
+    this.name=s
+    this.number=n
+    this.city=c
+
+}
+
+function Data(event)
+{
+    event.preventDefault()
+
+    
+    var s=document.querySelector("#name").value
+var n=document.querySelector("#numb").value
+var c=document.querySelector("#city").value
+
+var student= new data_student(s,n,c)
+array.push(student)
+localStorage.setItem("student_data",JSON.stringify(array))
+table()
+}
+
+function table()
+{
+    document.querySelector("tbody").textContent=""
+    var count=1
+    array.map(function(elem){
+        var tr=document.createElement("tr")
+
+        var td1=document.createElement("td")
+        td1.textContent=count++;
+
+        var td2=document.createElement("td")
+        td2.textContent=elem.name
+
+        var td3=document.createElement("td")
+        td3.textContent=elem.number
+
+        var td4=document.createElement("td")
+        td4.textContent=elem.city
+
+        tr.append(td1,td2,td3,td4)
+        document.querySelector("tbody").append(tr)
+    })
+}
+
+
+
+</script>

@@ -1,0 +1,62 @@
+body{
+    background-image:url(anime-crossover-poster-wallpaper-2560x1080_14.jpg);
+  /* background-repeat: no-repeat; */
+  background-size: cover;
+  margin: 0;
+  padding: 0;
+  box-shadow: rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset, rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset, rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset, rgba(0, 0, 0, 0.06) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
+  /* z-index: 3; */
+}
+#main{
+    height: 100vh;
+    width: 100vw;
+    background-color: black;
+    opacity: 0.4;
+    /* z-index: 5; */
+    
+}
+.navbar{
+    display: flex;
+    justify-content: space-between;
+    /* opacity: 1000000; */
+    height: 80px;
+    width: 100%;
+    /* background-color: black; */
+}
+.navbar>div:nth-child(1){
+    color: rgb(0, 255, 21);
+    font-size: xxx-large;
+    font-weight: bold;
+    font-family: 'Quintessential', cursive;
+/* opacity: 100; */
+/* background-color: black; */
+    
+}
+.navbar>div:nth-child(2)
+{
+    margin: 40px;
+}
+button{
+    background-color: black;
+    color: white;
+}
+#display{
+    /* border: 1px solid black; */
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    grid-gap: 20px;
+    margin: 20px;
+}
+#display>div{
+    height: 100%;
+    width: 65%;
+    /* background-color: black; */
+    text-align: center;
+    box-shadow: rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset, rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset, rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset, rgba(0, 0, 0, 0.06) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
+    /* background-color: aliceblue; */
+
+
+}
+/* img{
+    margin-left:  20%;
+} */

@@ -1,0 +1,24 @@
+.container1::-webkit-scrollbar {
+    width: 10px;
+    height: 20px;
+}
+.container1::-webkit-scrollbar-track {
+    background: #f1f1f1;
+   
+  }
+  .container1::-webkit-scrollbar-thumb {
+    background:  rgb(235, 114, 15);
+    border-radius: 10px;
+  }
+
+  /* background-color: #0d1528e6; */
+
+
+  /* key=7453bbbc3ad95c5693f1ceacd1f1d23c */
+
+  /* example=https://api.themoviedb.org/3/movie/550?api_key=7453bbbc3ad95c5693f1ceacd1f1d23c */
+
+  /* API Read Access Token (v4 auth) */
+
+
+  /* eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI3NDUzYmJiYzNhZDk1YzU2OTNmMWNlYWNkMWYxZDIzYyIsInN1YiI6IjYyMDJlMzAzNDFlZWUxMDAxYjdiNGUxZSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.E40PEq4tCGT45ktGib8F4pZ-DzWGzrhg5XDBAMJKZME */

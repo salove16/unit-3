@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+
+  <style>
+      #container{
+          display: flex;
+height: 600px;
+      }
+      div{
+          /* border: solid black 1px; */
+          height: 300px;
+      }
+      #input-section{
+flex: 1;
+margin: 5%;
+border: solid black 1px;
+
+      }
+      #output-section{
+          flex: 1;
+          margin: 5%;
+          border: solid black 1px;
+      }
+      #input-text{
+          width: 99%;
+          height: 80%;
+      }
+  </style>
+
+  <body>
+    <div id="container">
+      <div id="input-section">
+          <!-- <h4>input section</h4> -->
+        <button onclick="translateText()" id="translate-btn">Translate</button>
+        <input type="text" id="source" placeholder="source">
+        <input type="text" id="target" placeholder="target">
+        <!--Create button that will run translate text function, give id "translate-btn"-->
+        <textarea name="" id="input-text" ></textarea>
+        <!--Create input that will accept text to be translated, give id "input-text"-->
+      </div>
+      <div id="output-section">
+        <p id="translated-text">
+          <!--Show translated text here-->
+        </p>
+      </div>
+    </div>
+  </body>
+</html>
+
+<script>
+ let translateText = async () =>
+{
+    
+    try{
+    let input=document.getElementById("input-text").value;
+    let source=document.getElementById("source").value;
+    let target=document.getElementById("target").value;
+
+    let res=await fetch(`https://libretranslate.de/translate`,{
+        method:"POST",
+
+        body:JSON.stringify({
+            q:input,
+            source:source,
+            target:target,
+            format:"text",
+
+        }),
+        
+        headers:{
+            
+            "Content-Type":"application/json",
+        },
+    });
+    let data=await res.json()
+    console.log('data:',data)
+    document.getElementById("translated-text").textContent=data.translatedText
+}
+catch(err){
+    console.log("err:",err)
+}
+}
+
+</script>

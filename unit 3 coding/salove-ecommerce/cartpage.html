@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>addtocart</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        #container2 {
+            position: fixed;
+            left: 90px;
+            top: 0px;
+            width: 90%;
+            margin: 20px auto;
+            background-color: rgb(14, 14, 90);
+            height: auto;
+            display: flex;
+            justify-content: space-between;
+            padding: 5px 20px;
+            border-radius: 10px;
+            box-sizing: border-box;
+            color: white;
+            font-family: 'Roboto Mono', monospace;
+        }
+
+        .head {
+            /* flex-direction: row; */
+            display: flex;
+            font-weight: bold;
+            /* margin: 10px 5px; */
+        }
+
+        .head>div {
+            padding: 25px 10px;
+            margin: 0px 20px;
+        }
+
+
+        #container1 {
+            display: flex;
+            justify-content: space-around;
+            width: 50%;
+            margin: 120px auto;
+
+        }
+
+        #container {
+            /* width: 30%; */
+            height: auto;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            padding: 10px;
+            /* margin: auto; */
+            box-sizing: border-box;
+            background-color: rgb(241, 240, 236);
+            /* display: flex; */
+        }
+
+        .card {
+            background-color: white;
+            /* padding: 10px; */
+            width: 97%;
+            height: auto;
+            flex-direction: column;
+            /* display: flex; */
+            margin: 10px;
+        }
+
+        #right {
+            margin-right: -30px;
+            display: flex;
+            flex-direction: column;
+            /* align-content: center; */
+
+        }
+
+        #button {
+            color: white;
+            background-color: rgb(57, 140, 250);
+            width: 115px;
+            margin: 0px auto;
+            margin-top: 10px;
+            padding: 5px;
+            font-weight: bold;
+            font-size: 1em;
+        }
+
+        #check {
+            width: 80px;
+            margin: 0px auto;
+            margin-top: 20px;
+            padding: 5px;
+            font-weight: bold;
+        }
+
+        .line {
+            text-decoration: line-through;
+            color: rgba(128, 122, 122, 0.877);
+        }
+    </style>
+</head>
+
+<body>
+    <div id="container2">
+        <div class="head">
+            <h2 id="main">SHOPIN</h2>
+        </div>
+        <div class="head">
+            <div id="men">Men</div>
+            <div id="women">Women</div>
+            <div id="signin">Sign in</div>
+            <div id="login">Log in</div>
+            <div id="cart">Cart</div>
+        </div>
+    </div>
+</body>
+
+</html>
+<script>
+    var cart = JSON.parse(localStorage.getItem("CartItem")) || [];
+    lookCartPage(cart)
+
+    function lookCartPage(cart) {
+        var m1div = document.createElement("div");
+        m1div.setAttribute("id", "container1");
+        document.querySelector("body").append(m1div);
+
+
+        var mdiv = document.createElement("div");
+        mdiv.setAttribute("id", "container");
+        document.querySelector("#container1").append(mdiv);
+        document.querySelector("#container").textContent = "";
+        cart.map(function (el, index) {
+            var carddiv = document.createElement("div");
+            carddiv.setAttribute("class", "card");
+
+            var image = document.createElement("img");
+            image.setAttribute("src", el.image_url);
+
+
+            var cdiv = document.createElement("div");
+            cdiv.setAttribute("class", "side");
+
+            var head = document.createElement("h3");
+            head.textContent = el.name;
+
+            var c2div = document.createElement("div");
+            c2div.setAttribute("class", "down");
+
+            var para1 = document.createElement("p");
+            para1.textContent = el.price;
+
+            var para2 = document.createElement("p");
+            para2.setAttribute("class", "line");
+            para2.textContent = el.strikedoffprice;
+            // console.log(para2)
+            var para3 = document.createElement("button");
+            para3.textContent = "remove from cart"
+            para3.addEventListener("click", removeItem)
+
+            function removeItem() {
+
+                removeItemFromCart(index)
+            }
+
+
+
+            c2div.append(para1, para2, para3);
+            cdiv.append(head, c2div);
+            carddiv.append(image, cdiv);
+            // document.querySelector("body").append(carddiv)
+            // console.log(cdiv);
+            document.querySelector("#container").append(carddiv)
+        });
+    }
+    function removeItemFromCart(index) {
+        alert("remove from cart");
+        cart.splice(index, 1);
+        localStorage.setItem("CartItem", JSON.stringify(cart));
+        window.location.href = "cartpage.html"
+        lookCartPage(cart);
+    }
+
+    var sum = cart.reduce(function (acc, cv) {
+        return acc + Number(cv.price);
+    }, 0)
+    var price = document.createElement("h2");
+    price.textContent = `Total Price is - ₹${sum}`;
+
+    var totalItem = cart.length;
+    var item = document.createElement("h2");
+    item.textContent = `Total no.of Item is -${totalItem}`;
+
+    var input = document.createElement("input");
+    input.setAttribute("id", "input");
+    input.setAttribute("placeholder", "enter the promocode")
+
+    var button = document.createElement("button");
+    button.textContent = "Apply Promo";
+    button.setAttribute("id", "button");
+    button.addEventListener("click", function promo() {
+        var value = document.querySelector("#input").value
+        // console.log(value, sum);
+        var main = calculateDiscount(sum, value);
+        console.log(main);
+        price.textContent = `Total Price is - ₹${main}`
+    })
+    function calculateDiscount(sum, value) {
+        if (value == "masai30") {
+            var latest = Math.floor(sum - ((sum * 30) / 100));
+            return latest;
+            // console.log(latest);
+        }
+    }
+
+    var btn = document.createElement("button")
+    btn.textContent = "checkOut";
+    btn.setAttribute("id", "check")
+    btn.addEventListener("click", function check() {
+        alert("Thank you for purchasing");
+        window.location.href = "checkout.html"
+    })
+
+    var totalp = document.createElement("div");
+    totalp.setAttribute("id", "right")
+    totalp.append(price, item, input, button, btn);
+    // console.log(sum, totalItem);
+    document.querySelector("#container1").append(totalp);
+
+
+    document.querySelector("#main").addEventListener("click", function () {
+        window.location.href = "home.html"
+    });
+    document.querySelector("#men").addEventListener("click", function () {
+        window.location.href = "men.html"
+    })
+    document.querySelector("#women").addEventListener("click", function () {
+        window.location.href = "women.html"
+    })
+    document.querySelector("#signin").addEventListener("click", function () {
+        window.location.href = "signin.html"
+    })
+    document.querySelector("#login").addEventListener("click", function () {
+        window.location.href = "login.html"
+    })
+    document.querySelector("#cart").addEventListener("click", function () {
+        window.location.href = "cartpage.html"
+    })
+</script>

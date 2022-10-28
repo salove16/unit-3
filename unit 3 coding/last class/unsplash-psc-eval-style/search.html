@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>search</title>
+
+    <style>
+         #main{
+        flex: 8;
+        /* border: solid 2px rgb(184, 13, 13); */
+        display: grid;
+        grid-template-columns: repeat(3,1fr);
+        grid-gap: 20px;
+      }
+    img{
+      height: 400px;
+      width: 400px;
+    }
+    </style>
+  </head>
+
+  <body>
+    <div id="main">
+      <!--No need to add sidebar here, directly display search results here only-->
+    </div>
+  </body>
+</html>
+<script type="module">
+import { makeapicall , appendimage } from './scripts/main.js'
+let search_term=localStorage.getItem("search_term")
+
+let displayimage=await makeapicall(`https://api.unsplash.com/search/photos?query=${search_term}&client_id=G0VS2ZyPPAT2htSW4rP-OBc__gO6aIU2k83kEm9Kf14`)
+
+console.log(displayimage)
+let parent=document.getElementById("main")
+
+appendimage(displayimage.results,parent)
+
+
+</script>

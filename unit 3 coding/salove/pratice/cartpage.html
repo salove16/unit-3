@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CartPages</title>
+    <style>
+        img {
+            height: 50px;
+            width: 50px;
+            background-size: contain;
+        }
+
+        table {
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+
+        td,
+        th {
+            border: 1px solid black;
+            text-align: center;
+            width: 200px;
+        }
+    </style>
+</head>
+
+<body>
+    <table>
+        <thead>
+            <tr>
+                <th>image</th>
+                <th>Name</th>
+                <th>Price</th>
+            </tr>
+        </thead>
+        <tbody>
+
+        </tbody>
+    </table>
+    <input type="text" id="couponCode">
+    <button onclick="applyCoupodCode()">Apply Cuppon</button>
+
+    <p id="cart-price"></p>
+    <a href="address.html"> <button>Address Section</button></a>
+</body>
+
+</html>
+<script>
+    let cartData = JSON.parse(localStorage.getItem("cart"))
+    console.log(cartData)
+    renderData(cartData)
+    let totalPrice = totalAmountOFCart(cartData)
+    totalCartPrice(Math.round(totalPrice))
+
+    function totalAmountOFCart(cartData) {
+        let total = cartData.reduce(function (acc, cvv) {
+            {
+                return acc + cvv.price
+            }
+        }, 0)
+        return total;
+    }
+
+    function renderData(cart) {
+        let tableBody = document.querySelector("tbody")
+        // tableBody.innerText = ""
+
+        cart.map(function (prod) {
+            let tr = document.createElement("tr")
+
+            let td1 = document.createElement("td")
+
+            let image = document.createElement("img")
+            image.setAttribute("src", prod.image)
+
+            td1.append(image)
+
+            let td2 = document.createElement("td")
+            td2.innerText = prod.title
+
+            let td3 = document.createElement("td")
+            td3.innerText = prod.price
+
+            tr.append(td1, td2, td3)
+            tableBody.append(tr)
+        })
+    }
+
+    function totalCartPrice(price) {
+        let cartPrice = document.querySelector("#cart-price")
+        cartPrice.innerText = `Total Price :₹${price} `
+    }
+    function applyCoupodCode() {
+        let couponCode = document.getElementById("couponCode").value
+        if (couponCode == "masai30") {
+            let totalPrice = totalAmountOFCart(cartData)
+            // console.log(totalPrice)
+            let offerprice = Math.round(((totalPrice * 30) / 100))
+            offerprice = Math.round(totalPrice - offerprice)
+            console.log(offerprice)
+            totalCartPrice(offerprice)
+        }
+    }
+</script>

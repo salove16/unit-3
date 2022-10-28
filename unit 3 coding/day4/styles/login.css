@@ -1,0 +1,20 @@
+#login-form-div{
+    margin: 50px auto;
+    height: 200px;
+    width: 20%;
+    background-color:white;
+    text-align: center;
+    font-size: x-large;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    font-weight: bold;
+   
+   }
+   input{
+       margin-top: 20px;
+       
+   }
+   form>input:nth-last-child(1){
+       background-color: #008080;
+       color: white;
+       border-radius: 5px;
+   }

@@ -1,0 +1,46 @@
+body{
+    margin: 0;
+    padding: 0;
+    background-color: black;
+    z-index: 1;
+
+
+}
+
+
+#container{
+    width: 30%;
+    margin: 100px auto;
+    border:  2px solid #0dcaf0;
+    border-radius: 10px;
+    padding: 20px 20px;
+    background: nones;
+ 
+}
+#container label{
+    color: #0dcaf0;
+}
+#container input{
+    border: none;
+    border-bottom: 2px solid #0dcaf0;
+    margin-top: -10px;
+    background: none;
+    color: white;
+}
+h3{
+    color: #0dcaf0;
+    border-bottom: 4px solid #0dcaf0;
+    width: 150px;
+    text-align: center;
+    margin: auto;
+    margin-bottom: 10px;
+}
+textarea{
+    background: black;
+}
+button{
+    font-weight: bold;
+}
+p{
+    color: #0dcaf0;
+}
